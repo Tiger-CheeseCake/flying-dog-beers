@@ -20,7 +20,6 @@ alcohol = go.Bar(
 )
 
 beer_data = [bitterness, alcohol]
-beer_layout = go.Layout(
     barmode='group',
     title = 'Beer Comparison'
 )
@@ -28,8 +27,9 @@ beer_layout = go.Layout(
 beer_fig = go.Figure(data=beer_data, layout=beer_layout)
 
 ########### Display the chart
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash()
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 
 colors = {
@@ -37,8 +37,10 @@ colors = {
     'text': '#7FDBFF'
 }
 
-app.layout = html.Div(children=[
-    html.H1('Flying Dog Beers'),
+app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
+    html.H1(
+    children=[html.H1('Flying Dog Beers'),
+    
     dcc.Graph(
         id='flyingdog',
         figure=beer_fig
