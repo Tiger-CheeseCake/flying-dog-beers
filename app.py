@@ -32,8 +32,6 @@ beer_fig = go.Figure(data=beer_data, layout=beer_layout)
 app = dash.Dash()
 server = app.server
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
 colors = {
     'background': '#111111',
     'text': '#7FDBFF'
